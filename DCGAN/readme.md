@@ -24,15 +24,15 @@ The DCGAN model uses:
 
 Below is the loss curve showing how Generator and Discriminator loss evolved during training:
 
-![Loss Curve](DCGAN/loss.png)
+![Loss Curve](loss.png)
 
 ## Generated Samples
 
 ### After 71 Epochs  
-![Generated Epoch 71](DCGAN/generated_images/epoch_071.png)
+![Generated Epoch 71](generated_images/epoch_071.png)
 
 ### After 95 Epochs  
-![Generated Epoch 95](DCGAN/generated_images/epoch_095.png)
+![Generated Epoch 95](generated_images/epoch_095.png)
 
 
 
