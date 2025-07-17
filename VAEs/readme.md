@@ -24,7 +24,11 @@ This project explores different variants of Variational Autoencoders (VAEs) trai
 |-------|------------------------|
 | **Vanilla VAE** | ![Vanilla VAE Recon](reconstructed_images/NAIVE_VAE.png) |
 | **β-VAE (β = 0.7)** | ![Beta VAE 0.7 Recon](reconstructed_images/beta_vae.png) |
-| **Cyclic β-VAE** | ![Cyclic Beta VAE Recon](reconstructed_images/cylical_beta_epoch_150.png) |   ![Cyclic Beta VAE Loss curves ](metrics/cyclical_beta.png) |
+| **Cyclic β-VAE** | ![Cyclic Beta VAE Recon](reconstructed_images/cylical_beta_epoch_150.png) |  
+
+## Loss Curve (Cyclic β-VAE)
+
+![Cyclic Beta VAE Loss curves](metrics/cyclical_beta.png)
 
 ---
 
