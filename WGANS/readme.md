@@ -57,6 +57,4 @@ The dataset used is from [huggan/pokemon](https://huggingface.co/datasets/huggan
 - Weight clipping can lead to capacity underuse if the clip value is too small.
 - Gradient penalty often yields more stable training and better quality images.
 
----
 
-Feel free to adjust the image paths if your folder structure is different. Let me know if you also want to add FID scores or code snippets.
