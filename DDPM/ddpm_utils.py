@@ -143,7 +143,7 @@ def train_loop(
     for epoch in range(epochs):
         pbar = tqdm(dataloader, desc=f"Epoch {epoch}", leave=False)
         for i, x0 in enumerate(pbar):
-            x0 = x0.to(device)  # already normalized to [-1, 1]
+            x0 = x0.to(device) 
             B = x0.shape[0]
 
             # Sample t and noisy image

@@ -12,15 +12,7 @@ This repository contains an implementation of the Denoising Diffusion Probabilis
 
 Here are some generated samples from the model:
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-  <img src="DDPM/generated images/media_images_samples_74500_0fa35389577f64b48f23.png" alt="Sample 1" width="100%">
-  <img src="DDPM/generated images/media_images_samples_79900_0a0dfc54686cafa07b31.png" alt="Sample 2" width="100%">
-  <img src="DDPM/generated images/media_images_samples_83600_3df0e81a7fc858d2a196.png" alt="Sample 3" width="100%">
-  <img src="DDPM/generated images/media_images_samples_87200_1f08fd30b3c10ef87c2b.png" alt="Sample 4" width="100%">
-  <img src="DDPM/generated images/media_images_samples_87200_89335ee761b404f3d6c8 (1).png" alt="Sample 5" width="100%">
-  <img src="DDPM/generated images/media_images_samples_87200_8b076fd951dc9853b824.png" alt="Sample 6" width="100%">
-</div>
-
+![DDPM Generated Samples](ddpm_samples_grid.png)
 
 ## Future Work
 

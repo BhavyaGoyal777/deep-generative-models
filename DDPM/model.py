@@ -159,3 +159,56 @@ class UNET(nn.Module):
         x = self.up3(x, x1, t)      # 64, 128x128
         output = self.outc(x)
         return output
+
+
+"""
+
+Input: x → (B, 3, 128, 128)
+inc (DoubleConv 3→64): (B, 64, 128, 128) = x1
+down1:
+MaxPool2d(2): (B, 64, 64, 64)
+DoubleConv 64→128: (B, 128, 64, 64)
+DoubleConv 128→128: (B, 128, 64, 64) = x2
+sa1 (SelfAttention 128 ch, size=64): (B, 128, 64, 64)
+down2:
+MaxPool2d(2): (B, 128, 32, 32)
+DoubleConv 128→256: (B, 256, 32, 32)
+DoubleConv 256→256: (B, 256, 32, 32) = x3
+sa2 (SelfAttention 256 ch, size=32): (B, 256, 32, 32)
+down3:
+MaxPool2d(2): (B, 256, 16, 16)
+DoubleConv 256→256: (B, 256, 16, 16)
+DoubleConv 256→256: (B, 256, 16, 16) = x4
+sa3 (SelfAttention 256 ch, size=16): (B, 256, 16, 16)
+Bottleneck
+
+bot1 (DoubleConv 256→512): (B, 512, 16, 16)
+bot2 (DoubleConv 512→512): (B, 512, 16, 16)
+bot3 (DoubleConv 512→256): (B, 256, 16, 16)
+Decoder
+
+up1:
+Upsample x4: (B, 256, 32, 32)
+Concatenate with skip x3: cat([256, 256], dim=1) → (B, 512, 32, 32)
+DoubleConv 512→512 (residual), then 512→128: (B, 128, 32, 32)
+sa4 (SelfAttention 128 ch, size=32): (B, 128, 32, 32)
+up2:
+Upsample: (B, 128, 64, 64)
+Concatenate with skip x2: cat([128, 128]) → (B, 256, 64, 64)
+DoubleConv 256→256 (residual), then 256→64: (B, 64, 64, 64)
+sa5 (SelfAttention 64 ch, size=64): (B, 64, 64, 64)
+up3:
+Upsample: (B, 64, 128, 128)
+Concatenate with skip x1: cat([64, 64]) → (B, 128, 128, 128)
+DoubleConv 128→128 (residual), then 128→64: (B, 64, 128, 128)
+sa6 (SelfAttention 64 ch, size=128): (B, 64, 128, 128)
+Head
+
+outc (Conv2d 64→out_channels): (B, out_channels, 128, 128)
+Notes
+
+Time embedding t is shaped to (B, time_dim) and is added at each Down/Up stage as a bias per-channel broadcast; it doesn’t change the spatial sizes.
+The SelfAttention modules assume square feature maps with the provided size; for 128×128 input the sizes above are correct.
+If your input size differs from 128×128, the spatial sizes scale accordingly: each Down halves H,W; each Up doubles H,W. Make sure the SelfAttention size arguments match those feature map sizes at each level.
+
+"""        
